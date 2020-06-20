@@ -8,11 +8,9 @@ import {
     faTree,
     faCut,
     faLeaf,
-    faSadTear,
     faDoorClosed,
     faDumpster,
     faHammer,
-    faCar,
     faMusic,
     faDog,
 } from '@fortawesome/free-solid-svg-icons'
