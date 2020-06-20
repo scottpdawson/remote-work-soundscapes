@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+body {
+  margin: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: black;
+}
+a {
+  color: white;
+}
+h1 {
+  font-family: 'Shadows Into Light Two', cursive;
+  font-size: 2.5em;
+  line-height: 1.2em;
+}
+.volume-slider {
+    background: #FFFFFF66;
+    height: 10px;
+    border-radius: 10px;
+    border: 0;
+    top: 42%;
+}
+.volume-slider .track {
+  top: 20px;
+  height: 10px;
+}
+.volume-slider .handle {
+  background: black;
+  border-radius: 20px;
+  width: 20px;
+  height: 20px;
+  top: -5px;
+}
+.volume-slider .handle:hover, .player-icon:hover {
+  cursor: pointer;
+}
+main {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: stretch;
+  align-content: stretch;
+  transition: all 1s;
+}
+header {
+  flex: 1 auto;
+  max-width: 25%;
+  padding: 40px;
+  background: #ffffff33;
+}
+.playerContainer {
+  border-top: 1px solid #ffffff33;
+  padding: 20px 0px;
+}
+button, a.socialShare {
+  display: block;
+  width: 100%;
+  font-size: 1em;
+  padding: 9px;
+  border: 0;
+  border-radius: 10px;
+  color: black;
+  background: #00000022;
+  border-bottom: 3px solid #00000044;
+  margin: 0em 1em 1em 0em;
+  transition: all .3s;
+  text-align: center;
+  text-decoration: none;
+}
+button:hover, a.socialShare:hover {
+  cursor: pointer;
+  background: #00000044;
+}
+.share-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  margin-right: -10px;
+}
+.share-buttons a {
+  padding: 1em;
+  margin-right: 10px;
+  flex-grow: 1;
+  padding: 9px;
+}
+.players {
+  width: auto;
+  flex: 1 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 90vw;
+  margin: 0 auto;
+  padding: 20px;
+}
+.player {
+  position: relative;
+  width: 140px;
+  max-width: 140px;
+  height: 140px;
+  padding: 10px;
+  position: relative;
+  border: 7px solid #ffffff88;
+  border-radius: 140px;
+  flex: 1 0 250px;
+  box-sizing: border-box;
+  margin: .5rem .5rem 1.5rem;
+}
+footer {
+  flex: 1 100%;
+  text-align: center;
+  color: white;
+  margin: 1em;
+}
+@media all and (max-width: 850px) {
+  .header, .players { flex: 1 100%; }
+  main {
+    flex-flow: row wrap;
+  }
+  header { max-width: initial; }
+}
+.playerTitle {
+  font-family: 'Shadows Into Light Two', cursive;
+  font-size: 1.1em;
+  text-align: center;
+  margin: 0 auto;
+}
+.isPlaying {
+  border-color: #000000DD;
+  background: #ffffff66;
+}
+.player .player-icon {
+  color: #ffffff88;
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.isPlaying .player-icon {
+  color: #000000DD;
+}

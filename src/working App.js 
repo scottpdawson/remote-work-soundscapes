@@ -1,0 +1,114 @@
+import React from 'react';
+import './App.css';
+import ReactSlider from 'react-slider'
+
+class App extends React.Component {
+  
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      somethingIsPlaying: false,
+      trackList: [
+        { 
+          title: "Chain Saw",
+          src: 'sounds/chain-saw.mp3',
+        }, { 
+          title: "Lawn Mower",
+          src: 'sounds/lawn-mower.mp3', 
+        }, { 
+          title: "Microwave",
+          src: 'sounds/microwave.wav', 
+        }, { 
+          title: "Coffee Grinder",
+          src: 'sounds/coffee-grinder.mp3', 
+        }, { 
+          title: "Doorbell",
+          src: 'sounds/doorbell.mp3', 
+        }, { 
+          title: "Fire Truck",
+          src: 'sounds/fire-truck.wav', 
+        }, { 
+          title: "Garage Door",
+          src: 'sounds/garage-door.mp3', 
+        }, { 
+          title: "Garbage Truck",
+          src: 'sounds/garbage-truck.mp3', 
+        }
+      ]
+    }
+  }
+
+  toggleAll(b) {
+    // turn all on or off 
+    this.state.trackList.forEach(track => {
+      b ? track.player.play() : track.player.pause();
+    }, this);
+
+    // update state for which one is playing now
+    let trackList = this.state.trackList;
+    trackList.forEach(track => {
+      track.isPlaying = b;
+    }, this);    
+    this.setState({
+      trackList: trackList,
+    })
+
+  }
+
+  toggleTrack(track, index, shouldPlay) {
+    shouldPlay ? track.player.play() : track.player.pause();
+    track.isPlaying = shouldPlay;
+
+    // update state for which one is playing now
+    let trackList = this.state.trackList;
+    trackList[index].isPlaying = shouldPlay;
+    this.setState({
+      trackList: trackList,
+    })
+  }
+  
+  getlist = () => this.state.trackList.map((item, index) => {
+    let thisTrack = this.state.trackList[index];
+    return (
+      <div 
+        className={`player ${this.state.trackList[index].isPlaying ? "isPlaying" : "isNotPlaying"}`}
+        key={index}
+        title={item.title}
+      >
+      <button onClick={() => this.toggleTrack(thisTrack, index, true) }>Play</button>
+      <button onClick={() => this.toggleTrack(thisTrack, index, false) }>Stop</button>
+      <ReactSlider
+          className="volume-slider"
+          thumbClassName="handle"
+          trackClassName="track"
+          min={0}
+          max={1}
+          step={.1}
+          defaultValue={1}
+          onChange={(volume) => thisTrack.player.volume = volume}
+      />      
+      <audio 
+        ref={ref => thisTrack.player = ref} 
+        src={thisTrack.src}
+        loop
+      />
+      </div>
+    );
+  });
+
+  render() {
+  
+    return (
+      <>
+        <section className="players">
+          {this.getlist()}
+        </section>
+        <button onClick={() => this.toggleAll(true)}>Play All</button>
+        <button onClick={() => this.toggleAll(false)}>Stop All</button>
+      </>
+    );
+  }
+}
+
+export default App;
