@@ -13,6 +13,7 @@ import {
     faHammer,
     faMusic,
     faDog,
+    faCarrot,
 } from '@fortawesome/free-solid-svg-icons'
   
 export const sounds = [
@@ -76,6 +77,10 @@ export const sounds = [
         title: "Barking Dog",
         src: 'sounds/dog.mp3',
         icon: faDog,
+    }, { 
+        title: "Office Rabbit",
+        src: 'sounds/silence.mp3',
+        icon: faCarrot,
     }
 ];
 

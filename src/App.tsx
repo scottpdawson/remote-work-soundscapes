@@ -68,19 +68,33 @@ class App extends React.Component<MyProps, AppState> {
   getlist = () => this.state.trackList.map((item: any, index: number) => {
     let thisTrack = this.state.trackList[index];
     return (
-      <div className='playerContainer' key={index}>      
-        <p className='playerTitle'>{item.title}</p>
+      <div className="playerWrapper">
         <div 
-          className={`player ${thisTrack.isPlaying ? "isPlaying" : "isNotPlaying"}`}
-          title={item.title}
-        >
-        <FontAwesomeIcon 
-          size="4x" 
-          className="player-icon" 
-          icon={thisTrack.icon} 
+          className="playerContainer"
+          key={index}
           onClick={() => this.toggleTrack(thisTrack, index) }
-        />
-        {thisTrack.isPlaying && <ReactSlider
+
+        >      
+          <p className='playerTitle'>{item.title}</p>
+          <div 
+            className={`player ${thisTrack.isPlaying ? "isPlaying" : "isNotPlaying"}`}
+            title={item.title}
+          >
+          <FontAwesomeIcon 
+            size="4x" 
+            className="player-icon" 
+            icon={thisTrack.icon} 
+          />    
+          <audio 
+            ref={ref => thisTrack.player = ref} 
+            src={thisTrack.src}
+            loop
+            preload="auto"
+          />
+          </div>
+        </div>
+        {thisTrack.isPlaying && <div className="sliderWrapper">
+          <ReactSlider
             className="volume-slider"
             thumbClassName="handle"
             trackClassName="track"
@@ -89,14 +103,8 @@ class App extends React.Component<MyProps, AppState> {
             step={.1}
             defaultValue={thisTrack.player.volume || 1}
             onChange={(volume) => thisTrack.player.volume = volume}
-        />}      
-        <audio 
-          ref={ref => thisTrack.player = ref} 
-          src={thisTrack.src}
-          loop
-          preload="auto"
-        />
-        </div>
+          />
+        </div>}
       </div>
     );
   });

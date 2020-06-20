@@ -15,15 +15,19 @@ h1 {
   font-size: 2.5em;
   line-height: 1.2em;
 }
+.sliderWrapper {
+  position: absolute;
+  width: 140px;
+  margin: 0px 0px 0px 15px;
+  bottom: 25px;
+}
 .volume-slider {
     background: #FFFFFF66;
     height: 10px;
     border-radius: 10px;
     border: 0;
-    top: 42%;
 }
 .volume-slider .track {
-  top: 20px;
   height: 10px;
 }
 .volume-slider .handle {
@@ -33,7 +37,7 @@ h1 {
   height: 20px;
   top: -5px;
 }
-.volume-slider .handle:hover, .player-icon:hover {
+.volume-slider .handle:hover, .playerContainer:hover {
   cursor: pointer;
 }
 main {
@@ -49,9 +53,13 @@ header {
   padding: 40px;
   background: #ffffff33;
 }
+.playerWrapper {
+  position: relative;
+}
 .playerContainer {
   border-top: 1px solid #ffffff33;
   padding: 20px 0px;
+  margin: 0px 5px;
 }
 button, a.socialShare {
   display: block;
